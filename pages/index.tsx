@@ -12,7 +12,7 @@ export default function Home({ projects }: Props) {
   return (
     <div>
       <h1 className="text-7xl font-extrabold">Hello this is <span className="bg-gradient-to-r from-green-400 to-blue-600 bg-clip-text text-transparent">Mongolia</span>!</h1>
-      <p className = "mt-3 text-xl text-gray-600">Let's travel to Mongolian beautiful places
+      <p className = "mt-3 text-xl text-gray-600">Lets travel to Mongolian beautiful places
       </p>
       <h2 className = "mt-24 font-extrabold text-gray-700 text-3x1">Places</h2>
       <div className = "mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -23,7 +23,7 @@ export default function Home({ projects }: Props) {
           {project.image && (
             <Image
             src={project.image}
-            alt = {project}
+            alt = "project"
             width ={750}
             height = {300}
             className = "object-cover rounded-lg border border-gray-500"
