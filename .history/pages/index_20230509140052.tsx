@@ -22,8 +22,8 @@ export default function Home({ projects }: Props) {
         key={project._id} className="border-2 border-gray-500 rounded-lg p-1 hover:scale-105 hover:border-blue-500 transition">
           {project.image && (
             <Image
-            src={project.image}
-            alt = {project}
+            src={Promise.resolve(project.name)}
+            alt = {project.name}
             width ={750}
             height = {300}
             className = "object-cover rounded-lg border border-gray-500"
@@ -39,6 +39,7 @@ export default function Home({ projects }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const projects = await getProjects();
+
   return {
     props: {
       projects,

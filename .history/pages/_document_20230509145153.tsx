@@ -1,7 +1,9 @@
+import { getPages } from '@/sanity/sanity-utils'
 import { Html, Head, Main, NextScript } from 'next/document'
 import Link from 'next/link'
 
-export default function Document() {
+export default async function Document() {
+  const pages = await getPages();
   return (
     <Html lang="en">
       <Head />
@@ -12,6 +14,13 @@ export default function Document() {
          className ="bg-blue-600 bg-clip-text text-transparent text-lg font-bold">
           Home Page 
         </Link> 
+        <div>
+          {pages.map((page)=>(
+          <Link key = {page._id} href={'/${page.slug}'}>
+            {page.title}
+          </Link>
+          ))}
+        </div>
         </header>
         <main className='py-5'></main>
         <Main />

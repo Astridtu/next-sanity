@@ -1,7 +1,9 @@
+import { getPages } from '@/sanity/sanity-utils'
 import { Html, Head, Main, NextScript } from 'next/document'
 import Link from 'next/link'
 
-export default function Document() {
+export default async function Document() {
+  const pages = await getPages
   return (
     <Html lang="en">
       <Head />

@@ -1,4 +1,4 @@
-import { getProjects } from "@/sanity/sanity-utils";
+import { getPages, getProjects } from "@/sanity/sanity-utils";
 import type { GetStaticProps } from "next";
 import type { Project } from "@/types/Project";
 import Image from "next/image";
@@ -36,12 +36,3 @@ export default function Home({ projects }: Props) {
     </div>
   );
 }
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const projects = await getProjects();
-  return {
-    props: {
-      projects,
-    },
-  };
-};

@@ -3,12 +3,19 @@ import type { GetStaticProps } from "next";
 import type { Project } from "@/types/Project";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Props } from "next/script";
+export default function Home() {
+  const [projects, setProjects] = useState<Project[]>([]);
 
-type Props = {
-  projects: Project[];
-};
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const projects = await getProjects();
+      setProjects(projects);
+    };
 
-export default function Home({ projects }: Props) {
+    fetchProjects();
+  }, []);
   return (
     <div>
       <h1 className="text-7xl font-extrabold">Hello this is <span className="bg-gradient-to-r from-green-400 to-blue-600 bg-clip-text text-transparent">Mongolia</span>!</h1>
@@ -39,6 +46,7 @@ export default function Home({ projects }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const projects = await getProjects();
+
   return {
     props: {
       projects,
